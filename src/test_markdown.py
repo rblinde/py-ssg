@@ -31,8 +31,8 @@ class TestMarkdownToHTMLNode(unittest.TestCase):
             "> first line of quote\n> _italic_ and **bold** text"
         ).to_html()
         want = (
-            "<div><blockquote><p>first line of quote</p>"
-            "<p><i>italic</i> and <b>bold</b> text</p></blockquote></div>"
+            "<div><blockquote>first line of quote "
+            "<i>italic</i> and <b>bold</b> text</blockquote></div>"
         )
         self.assertEqual(result, want)
 

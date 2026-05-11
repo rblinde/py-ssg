@@ -21,13 +21,13 @@ def create_paragraph_node(block):
 
 def create_blockquote_node(block):
     lines = block.split("\n")
-    children = []
-
+    new_lines = []
     for line in lines:
-        sub_children = text_to_children(line[1:].strip())
-        children.append(ParentNode("p", sub_children))
-
-    return ParentNode("blockquote", children)
+        if not line.startswith(">"):
+            raise ValueError("invalid quote block")
+        new_lines.append(line.lstrip(">").strip())
+    content = " ".join(new_lines)
+    return ParentNode("blockquote", text_to_children(content))
 
 
 def create_ordered_list_node(block):
